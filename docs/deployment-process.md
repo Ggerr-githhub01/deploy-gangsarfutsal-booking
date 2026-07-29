@@ -60,3 +60,73 @@ Example:
 ```bash
 ssh root@154.19.37.170
 ```
+SSH provided secure remote access to the Ubuntu Server, allowing all deployment and server administration tasks to be performed from the local development machine.
+
+# Update System Packages
+
+Before installing the required software, the server packages were updated to ensure the latest package information and security updates were available.
+
+The update process reduced the possibility of dependency conflicts during software installation and ensured compatibility with the deployment environment.
+
+Example: 
+
+```text
+sudo apt-get update
+sudo apt-get upgrade -y
+```
+
+# Install Server Component
+
+The software components needed to run the application include the following:
+
+- Apache2
+- MySQL Server
+- PHP 8.3
+- Required PHP Extensions
+- Composer
+- Git
+
+These components are important parts to support Laravel applications to run on the server.
+
+### Apache2 
+
+Apache2 is a type of open source web server that is stable and compatible with various application platforms, which here acts as the main web server that serves Laravel applications.
+
+```bash
+sudo apt install Apache2
+sudo systemctl restart
+```
+
+### MySQL Server
+
+MySQL Server was chosen as the database because of its resource-efficient and multi-user capabilities, as well as its security with a robust encryption system and data layers.
+
+The database is used to store user-created accounts and other necessary data.
+
+```bash
+sudo apt install mysql-server -y
+```
+
+### PHP 8.3
+
+PHP 8.2 and its required extensions were installed to execute the Laravel application.
+
+```bash
+sudo apt install apache2 php php-cli php-mbstring php-xml php-bcmath php-curl php-mysql unzip cur git -y
+```
+
+### Composer
+
+Composer is needed to manage PHP packages used by the Laravel framework.
+
+```bash
+curl -sS https://getcomposer.org/installer | php
+composer -v
+```
+
+## Upload Project via SCP
+
+Once the server environment is fully prepared, the next step is to upload the project files to the VPS server using Secure Copy Protocol (SCP).
+
+The project is uploaded as a compressed archive to simplify the transfer process and preserve the project structure during deployment.
+
