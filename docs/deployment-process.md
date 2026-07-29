@@ -9,37 +9,54 @@ The deployment was performed on a Virtual Private Server using Apache2 as the we
 ## Deployment Workflow
 
 ```text
-Project Preparation
+Login to VPS
+        │
+        ▼
+Update System Packages
+        │
+        ▼
+Install Server Components
         │
         ▼
 Upload Project via SCP
         │
         ▼
-Verify Project Files
+Configure Laravel Environment
         │
         ▼
-Install Application Dependencies
-        │
-        ▼
-Configure Environment
-        │
-        ▼
-Generate Application Key
-        │
-        ▼
-Database Migration
+Initialize Database
         │
         ▼
 Configure Apache VirtualHost
         │
         ▼
-Configure File Permissions
-        │
-        ▼
 Configure Firewall
         │
         ▼
-Configure Domain
+Validate Application
         │
         ▼
-Deployment Validation
+Harden SSH Configuration
+        │
+        ▼
+Configure SSL Certificate
+        │
+        ▼
+Final Validation
+```
+
+# Login to VPS
+
+This deployment process begins by logging into the VPS via secure shell (SSH) using the obtained public IP.
+
+By using the following command:
+
+```bash
+ssh username@server-IP
+```
+
+Example: 
+
+```bash
+ssh root@154.19.37.170
+```
