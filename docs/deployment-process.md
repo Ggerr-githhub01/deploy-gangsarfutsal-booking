@@ -45,7 +45,7 @@ Configure SSL Certificate
 Final Validation
 ```
 
-# Login to VPS
+## Login to VPS
 
 This deployment process begins by logging into the VPS via secure shell (SSH) using the obtained public IP.
 
@@ -62,7 +62,7 @@ ssh root@154.19.37.170
 ```
 SSH provided secure remote access to the Ubuntu Server, allowing all deployment and server administration tasks to be performed from the local development machine.
 
-# Update System Packages
+## Update System Packages
 
 Before installing the required software, the server packages were updated to ensure the latest package information and security updates were available.
 
@@ -75,7 +75,7 @@ sudo apt-get update
 sudo apt-get upgrade -y
 ```
 
-# Install Server Component
+## Install Server Component
 
 The software components needed to run the application include the following:
 
@@ -124,7 +124,7 @@ curl -sS https://getcomposer.org/installer | php
 composer -v
 ```
 
-# Upload Laravel Application
+## Upload Laravel Application
 
 Once the server environment is fully prepared, the next step is to upload the project files to the VPS server using Secure Copy Protocol (SCP).
 
@@ -159,3 +159,121 @@ unzip PAS.futsal.zip
 ```
 
 The extracted files formed the Laravel application structure used for the subsequent deployment configuration.
+
+## Configure Laravel Environment
+
+Once the Laravel application files are on the server, the next step is to configure the deployment environment which is managed through the Laravel `.env` file.
+
+### Environment File 
+
+The `.env` file is located in the same location as the laravel project, used to define environment-specific application settings.
+
+The Configuration Included : 
+
+- Application environtment
+- Application key
+- Database connection
+- Database credentials
+
+Sensitive configuration values were kept outside version control.
+
+## Initialize Database
+
+The Laravel application's `.env` file will connect to the MySQL database on the Ubuntu server.
+
+The database initialization process included generating the Laravel application key, configuring the database connection through the `.env` file, and running the Laravel database migrations.
+
+### Generate Application Key
+
+Laravel application keys are generated using Artisan.
+
+```bash
+php artisan key:generate
+```
+The generated `APP_KEY` is stored in the `.env` configuration file and is used by Laravel for application encryption.
+
+### Configure Database Connection 
+
+Laravel database connection is configured via `.env` file to connect the application with MySQL database server.
+
+The configured part include the following : 
+
+```bash
+DB_DATABASE
+DB_USERNAME
+DB_PASSWD
+```
+Database credentials are configured according to the MySQL database and user created during the server setup process.
+
+### Run Database Migration
+
+After the entire configuration process is complete, database initialization is performed by running Laravel migrations.
+
+```bash
+php artisan:migrate
+```
+
+The migration process created the database tables required by the Laravel application.
+
+## Configure Apache Virtualhost
+
+The Apache VirtualHost is configured to serve the Laravel application from its `public` directory.
+
+The VirtualHost configuration defines the application's document root, directory access rules, and Apache log files.
+
+### Create VirtualHost Configuration 
+
+A custom VirtualHost configuration file has been created for the Laravel application.
+
+```bash
+sudo nano /etc/apache2/sites-available/futsal.conf
+```
+
+The configuration below points Apache to the Laravel application's `public` directory:
+
+```bash
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/project.futsal/public
+
+    <Directory /var/www/project.futsal>
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/futsal_error.log
+    CustomLog ${APACHE_LOG_DIR}/futsal_access.log combined
+</VirtualHost>
+```
+#### noted: In the ServerAdmin section, it still contains localhost because this is taken from the project documentation that was practiced on virtual box, while the VPS and domain are no longer active.
+
+## Enable Apache Configuration
+
+Apache rewrite module has been enabled and Laravel VirtualHost has been activated.
+
+```bash
+sudo a2enmod rewrite
+sudo a2ensite laravel.conf
+sudo a2dissite 000-default.conf
+```
+
+After that restart the apache system to activate the new configuration.
+
+```bash
+sudo systemctl restart apache2
+```
+
+### Configuration Purpose
+
+The VirtualHost configuration directs Apache requests to the Laravel application's `public` directory.
+
+The default Apache site is disabled to prevent conflicts with the default VirtualHost configuration.
+
+The `AllowOverride All` directive allows Laravel's `.htaccess` configuration to be processed, while `Require all granted` allows clients to access the application directory.
+
+## Configure Firewall
+
+The server firewall is configured using UFW (Uncomplicated Firewall) to control network access to the VPS.
+
+Only ports required by the service are opened, while other unneeded ports are closed.
+
