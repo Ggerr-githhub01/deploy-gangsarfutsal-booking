@@ -124,9 +124,38 @@ curl -sS https://getcomposer.org/installer | php
 composer -v
 ```
 
-## Upload Project via SCP
+# Upload Laravel Application
 
 Once the server environment is fully prepared, the next step is to upload the project files to the VPS server using Secure Copy Protocol (SCP).
 
 The project is uploaded as a compressed archive to simplify the transfer process and preserve the project structure during deployment.
 
+## Create Project Directory
+
+At this stage, the Laravel application is stored in a different directory from the existing default directory to differentiate and separate the system's default files from the project files that we add ourselves.
+
+```bash
+sudo mkdir /var/www/project.futsal
+```
+
+This directory served as the deployment location for the application and helped maintain a clean and organized server structure.
+
+## Transfer Project Via SCP
+
+Laravel application files are sent from windows local storage to ubuntu server using SCP.
+
+```bash
+scp "C:\Users\...\PAS.futsal.zip" root@server-ip:/var/www/project.futsal/
+```
+
+The project was transferred as a compressed archive to simplify the file transfer process.
+
+## Ekstrak Project Archive
+
+Once the project files are moved, the archive is extracted inside the deployment directory.
+
+```bash
+unzip PAS.futsal.zip
+```
+
+The extracted files formed the Laravel application structure used for the subsequent deployment configuration.
