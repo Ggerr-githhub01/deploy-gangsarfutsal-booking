@@ -277,3 +277,43 @@ The server firewall is configured using UFW (Uncomplicated Firewall) to control 
 
 Only ports required by the service are opened, while other unneeded ports are closed.
 
+### Firewall Rules 
+
+The following are the firewall rules used in deployment : 
+
+```
+| Port | Service | Access |
+|------|---------|--------|
+| 22 | SSH | Allowed |
+| 80 | HTTP | Allowed |
+| 443 | HTTPS | Allowed |
+| 3306 | MySQL | Denied |
+| 21 | FTP | Denied |
+| 25 | SMTP | Denied |
+```
+
+### Firewall Verification
+
+The firewall rules that have been implemented are then verified for their status to ensure the configuration is running correctly.
+
+```bash
+sudo ufw status
+```
+
+## Validate Application
+
+Once the server and application configuration is complete, the Laravel application is validated to ensure the deployment is functioning correctly.
+
+This validation focuses on application accessibility, database connectivity, and core application functionality.
+
+### Application Accessibillity
+
+The Laravel website is accessed through a web server domain previously configured on an Apache virtual host.
+
+A successful response from the Laravel application confirms that Apache is correctly serving the application from the configured virtual host.
+
+### Database Connectivity
+
+Application database connectivity has been verified through the deployed Laravel application.
+
+A successful connection confirms that the database configuration in the `.env` file and the MySQL server are functioning correctly.
