@@ -317,3 +317,103 @@ A successful response from the Laravel application confirms that Apache is corre
 Application database connectivity has been verified through the deployed Laravel application.
 
 A successful connection confirms that the database configuration in the `.env` file and the MySQL server are functioning correctly.
+
+### Application Functionally
+
+The actual functionality of this futsal field booking website will be tested after it is launched.
+
+The validation included:
+
+- User registration and login
+- Futsal court selection
+- Schedule selection
+- Booking process
+- Booking data management
+- Admin booking approval or rejection
+
+### Deployment Result
+
+This validation confirms that the Laravel application has been successfully published and is accessible through the configured domain.
+
+The application is able to communicate with the MySQL database and perform its core ordering functions as expected.
+
+## Harden SSH Configuration
+
+Once the web application has been successfully validated, the next step is to configure SSH as part of network security.
+
+SSH configuration is done by replacing the default SSH port with a custom port. This aims to avoid security vulnerabilities through easily compromised network ports.
+
+### Change SSH port
+
+The default SSH port configuration has been modified to use a non-default port.
+
+The SSH configuration is changed by running:
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+The SSH port configuration has been changed to a custom port by the server.
+
+### Update Firewall Rule
+
+After changing the SSH port, the configuration is updated to direct the system to use the new assigned port.
+
+The firewall rules were verified before terminating the existing SSH session to ensure that remote access remained available.
+
+### Verify SSH Access
+
+The new SSH configuration has been tested with a remote client using the updated port.
+
+```bash
+ssh -p <custom port> username@server-ip
+```
+
+Successful authentication confirms that the SSH service remains accessible after the port change.
+
+## Configure SSL Certificate
+
+After the application and server configurations are validated, HTTPS is configured to use an SSL/TLS certificate for the application.
+
+The SSL configuration serves to secure communications between the client and the Laravel application implemented over HTTPS.
+
+### Install Certbot
+
+Certbot is installed to obtain and manage SSL/TLS certificates for Apache web servers.
+
+```bash
+sudo install certbot python3-certbot-apache -y
+```
+
+### Obtain SSL Certificate
+
+An SSL/TLS certificate has been requested for the domain configured using Certbot with the Apache plugin.
+
+```bash
+sudo certbot --apache
+```
+
+Certbot configures certificates for Apache VirtualHost and enables HTTPS access for the application.
+
+### HTTPS Verification
+
+HTTPS configuration is verified by accessing the application through a domain configured using the HTTPS protocol.
+
+A successful HTTPS connection confirms that the SSL/TLS certificate has been properly configured for the implemented application.
+
+## Final Validation 
+
+Final validation is performed after SSL/TLS configuration is complete to ensure that the implemented application and its supporting services are functioning correctly.
+
+This validation covers application accessibility, HTTPS connectivity, database connectivity, and core functionality of the booking system.
+
+### Validation Checklist
+
+| Validation | Result |
+|------------|--------|
+| Application accessible through domain | Passed |
+| MySQL database connection | Passed |
+| Core application functionality | Passed |
+| SSH remote access | Passed |
+| SSL/TLS certificate configured | Passed |
+| HTTPS connection | Passed |
