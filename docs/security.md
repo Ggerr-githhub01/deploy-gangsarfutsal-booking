@@ -75,8 +75,8 @@ This was identified as a security improvement for future implementations.
 
 ### Dedicated Administrative User
 
-A dedicated administrative user should be created for routine server administration, rather than using the superuser account directly.
+For routine user administration processes, it's best to use a new user other than the superuser. This user should only be granted specific access rights, depending on the purpose.
 
-This user should only receive elevated access rights when needed via sudo, while routine operations should be performed using a non-root account.
+This user should only receive elevated access rights if necessary via sudo, while routine operations should be performed using a non-root account.
 
-This approach reduces the potential impact of accidental commands or unauthorized access to the server.
+This approach aims to mitigate the worst-case scenario if the server is compromised, at least while it's still operating under a regular user, whose access is more limited than that of the superuser.
