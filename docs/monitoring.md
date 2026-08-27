@@ -17,3 +17,8 @@ The monitored ascpets included:
 - **Response Time** - measures how long it takes the target to respond to a monitoring check.
 - **Service Status** - Monitor the availability of selected services and endpoints, including MySQL, Apache, and other configured targets.
 
+## Monitoring Architecture
+
+The monitoring architecture describes the relationship between the monitored services, Kuma Uptime, and the monitoring results collected during monitoring activities.
+
+![Monitoring Architecture](../diagrams/monitoring-architecture.png)
