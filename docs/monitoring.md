@@ -21,4 +21,6 @@ The monitored ascpets included:
 
 The monitoring architecture describes the relationship between the monitored services, Kuma Uptime, and the monitoring results collected during monitoring activities.
 
-![Monitoring Architecture](../diagrams/monitoring-architecture.png)
+![Monitoring Architecture](../diagrams/diagram%20monitoring%20server.drawio.png)
+
+## Monitoring Tools
