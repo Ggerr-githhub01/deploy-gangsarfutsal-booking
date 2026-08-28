@@ -24,3 +24,65 @@ The monitoring architecture describes the relationship between the monitored ser
 ![Monitoring Architecture](../diagrams/diagram%20monitoring%20server.drawio.png)
 
 ## Monitoring Tools
+
+The server environment used will be continuously monitored to ensure the system remains optimal.
+
+In this situation, technicians use Kuma Uptime as the primary tool in the server performance monitoring process.
+
+### Uptime Kuma
+
+Uptime Kuma was used as the primary monitoring tool to monitor the availability and status of configured services and endpoints.
+
+The monitoring dashboard provided information including:
+
+- Service availabillity status
+- Uptime percentage
+- Response time
+- Ping latency
+- Up/Down status history
+- Connection failure events
+
+## Metrics Monitored
+
+In the process of monitoring server performance using Kuma Uptime, monitoring only focuses on service availability and connectivity.
+
+Monitored metrics and status information include:
+
+### Availabillity Status
+
+The service availability status in Kuma's uptime monitoring process is identified using the terms "Active" and "Inactive" which indicate the availability of the monitoring target.
+
+### Uptime precentage
+
+Kuma Uptime records the percentage of availability of monitored targets over various time periods, including 24 hours, 30 days, and 1 year, etc.
+
+### Response time 
+
+Response times are monitored in milliseconds to observe the target's response latency.
+
+The dashboard typically displays the average response latency over time and the lowest response latency the target has ever sent.
+
+## Monitoring Configuration
+
+Uptime Kuma is configured to monitor multiple servers simultaneously, as well as to observe how the system performs after deployment.
+
+### Monitor Targets
+
+Kuma Uptime is targeted to monitor the performance of services running on a server environment, as well as notify you if there are any problems with it at any time.
+
+The configured targets included Apache, MySQL, web endpoints, and external network targets.
+
+### Monitor types
+
+Several types of monitors are configured according to the type of target being monitored.
+
+For the MySQL service, Uptime Kuma used TCP Port monitoring with the following target:
+
+- Host: `localhost`
+- Port: `3306`
+
+### Monitoring Parameters
+
+Each monitor is configured with parameters appropriate to its target. This configuration includes the target address and the monitoring method needed to determine service availability.
+
+The monitoring dashboard records availability status, response time, and the resulting status history.
