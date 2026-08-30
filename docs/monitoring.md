@@ -86,3 +86,31 @@ For the MySQL service, Uptime Kuma used TCP Port monitoring with the following t
 Each monitor is configured with parameters appropriate to its target. This configuration includes the target address and the monitoring method needed to determine service availability.
 
 The monitoring dashboard records availability status, response time, and the resulting status history.
+
+## Monnitoring Results
+
+Server environmental conditions will be continuously monitored to maintain stable performance.
+
+All monitoring results will be displayed in real time via the monitoring dashboard.
+
+### Service Availabillity
+
+The monitoring dashboard displays the availability of the targeted configuration service.
+
+This is indicated by the statement "Up," meaning the service is available, and "Down," meaning the service is unavailable.
+
+### Uptime & Response Time
+
+Uptime Kuma provides statistical information in the form of response times for monitored targets.
+
+Response time is measured in milliseconds and reflects how quickly the target responds to monitoring, along with the average response time over a specified period.
+
+For example, the captured monitoring data shows an uptime of 96.03%, with a current ping of 1 ms and an average ping of 1.24 ms over the displayed period.
+
+### Status History
+
+Uptime Kuma records every change that occurs to the monitored target and displays it on the dashboard in real time.
+
+Stored monitoring logs indicate when the target has experienced a loss of service availability, indicated by the Up and Down statuses on the monitoring dashboard.
+
+This historical information provides a baseline record of service availability incidents during the monitoring period.
