@@ -118,3 +118,5 @@ Uptime Kuma records every change that occurs to the monitored target and display
 Stored monitoring logs indicate when the target has experienced a loss of service availability, indicated by the Up and Down statuses on the monitoring dashboard.
 
 This historical information provides a baseline record of service availability incidents during the monitoring period.
+
+![Status History](../screenshoots/uptime.jpg)
