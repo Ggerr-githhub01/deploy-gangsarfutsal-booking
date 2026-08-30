@@ -107,6 +107,8 @@ Response time is measured in milliseconds and reflects how quickly the target re
 
 For example, the captured monitoring data shows an uptime of 96.03%, with a current ping of 1 ms and an average ping of 1.24 ms over the displayed period.
 
+![Server Availabillity](../screenshoots/monitoring%20server.jpg)
+
 ### Status History
 
 Uptime Kuma records every change that occurs to the monitored target and displays it on the dashboard in real time.
