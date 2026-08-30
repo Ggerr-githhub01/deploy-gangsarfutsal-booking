@@ -99,6 +99,8 @@ The monitoring dashboard displays the availability of the targeted configuration
 
 This is indicated by the statement "Up," meaning the service is available, and "Down," meaning the service is unavailable.
 
+![Server Availabillity](../screenshoots/monitoring%20server.jpg)
+
 ### Uptime & Response Time
 
 Uptime Kuma provides statistical information in the form of response times for monitored targets.
@@ -106,8 +108,6 @@ Uptime Kuma provides statistical information in the form of response times for m
 Response time is measured in milliseconds and reflects how quickly the target responds to monitoring, along with the average response time over a specified period.
 
 For example, the captured monitoring data shows an uptime of 96.03%, with a current ping of 1 ms and an average ping of 1.24 ms over the displayed period.
-
-![Server Availabillity](../screenshoots/monitoring%20server.jpg)
 
 ### Status History
 
