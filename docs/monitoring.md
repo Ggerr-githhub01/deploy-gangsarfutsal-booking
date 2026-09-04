@@ -120,3 +120,28 @@ Stored monitoring logs indicate when the target has experienced a loss of servic
 This historical information provides a baseline record of service availability incidents during the monitoring period.
 
 ![Status History](../screenshoots/uptime.jpg)
+
+## Observations
+
+Based on the monitoring results obtained previously, we can determine the behavioral responses the system displays during the monitoring process.
+
+Here are some observations that can be identified from the monitoring dashboard:
+
+- Target service availability can generally be monitored through the Up/Down status. The dashboard records the current status of each monitored target in real time, making it easy for monitors to immediately identify issues without manually testing.
+- Monitoring results show that the target's response time remains low. The dashboard displays the monitored target's current ping at approximately 1 ms and an average ping of approximately 1.24 ms. These values ​​reflect the response observed by the monitor during the monitoring process and should not be interpreted as a measure of overall application performance.
+- Historical response behavior can be reviewed using a response time graph. This provides a visual representation of response time changes over the monitoring period and makes temporary changes easier to identify than relying solely on current ping values.
+- Service availability was not always perfect during the observation period. One monitoring result showed an uptime of around 96.03%, while the dashboard also recorded a connection failure some time prior. This indicates that the monitored target experienced at least one period where the monitoring system was down and unable to operate.
+- Current context and daily status are displayed through the dashboard. Other variables such as a combination of uptime percentage, response time information, and logged status events allow service behavior to be reviewed after an incident occurs, rather than simply observing the current Active/Inactive status.
+
+Overall, the monitoring activity provided visibility into the operational state of the monitored targets and demonstrated that availability and connectivity could be observed continuously through Uptime Kuma. However, the results represent the specific monitoring targets and observation period shown in the dashboard, rather than a complete measurement of the performance or reliability of the Gangsar Futsal application as a whole.
+
+## Limitations
+
+This monitoring activity has several limitations:
+
+- Monitoring was conducted as a separate post-implementation activity, not as part of the initial deployment testing of the Gangsar Futsal application.
+- The available monitoring evidence is limited to the Uptime Kuma dashboard and its recorded metrics. It does not provide detailed measurements of CPU, memory, disk usage, application performance, or database performance.
+- Not all targets displayed in the Uptime Kuma dashboard can be confirmed as components of the Gangsar Futsal system. Some targets may have been used for additional monitoring or practice activities.
+- The available screenshots represent only a limited observation period and therefore cannot be used to determine long-term system reliability.
+- The monitoring results describe the behavior observed by Uptime Kuma and should not be interpreted as a complete evaluation of the application's overall performance or infrastructure health.
+
